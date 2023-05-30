@@ -1,4 +1,5 @@
 
+const prompt = require('prompt-sync')();
 
 let savings = 0;
 let toolBox = [];
@@ -14,7 +15,7 @@ toolBox.push({
 });
 
 toolBox.push({
-  tool: 'scissors',
+  tool: 'pair of scissors',
   cost: 5,
   income: 5,
   inTheBox: false
@@ -35,15 +36,15 @@ toolBox.push({
 });
 
 toolBox.push({
-  tool: 'team of students',
+  tool: 'team of robot students',
   cost: 500,
   income: 250,
   inTheBox: false
 });
 
-console.log("--------------------------------------");
 
-console.log(toolBox);
+
+//console.log(toolBox);
 
 //let name = prompt("What is your name? : ");
 function buildToolList() {
@@ -66,31 +67,31 @@ function incrementSavings(tool) {
 
 function buyATool(tool) {
   const nextTool = parseInt(tool) + 1;
-  console.log(toolBox[tool]);
-console.log(tool);
-  // console.log(nextTool);
-console.log(toolBox[nextTool]);
-console.log(toolBox[nextTool].inTheBox);
-console.log(savings);
-console.log(toolBox[nextTool].cost);
-  
+
   if (tool < 4 && toolBox[nextTool].inTheBox === false && savings >= toolBox[nextTool].cost) {
-    
-    buyTool = prompt("Would you like to buy a " + toolBox[nextTool].tool + "?: (y/n)\n");
-    if (buyTool = 'y') {
+    console.log("You have " + savings + " dollars in  your savings. Would you like to buy a " + toolBox[nextTool].tool + "?:")
+    buyTool = prompt("(y/n)");
+    if (buyTool === 'y') {
       savings = savings - toolBox[nextTool].cost;
       toolBox[nextTool].inTheBox = true;
+
+      //echo savings and if last tool in toolbox
+      console.log(toolBox[4].inTheBox);
+      console.log(savings);
+      
     }
   }
 }
 
 function main() {
-  while (toolBox[4].inTheBox === false && savings < 1000) {
-
+  while (savings < 1000 && toolBox[4].inTheBox === false) {
+    console.log(toolBox[4].inTheBox);
+    console.log(savings);
     //pick a tool to use
     buildToolList();
     console.log("You have " + savings + " dollar(s) in your savings.\n")
-    tool = prompt("Here are the tools in your toolbox. Which one would you like to use today?: ");
+    console.log("Here are the tools in your toolbox. Which one would you like to use today?: ")
+    tool = prompt("");
 
     //confirm tool is in the box and increment savings
     if (toolBox[tool].inTheBox === true) {
@@ -100,10 +101,13 @@ function main() {
 
       //offer a chance to buy a tool
       buyATool(tool);
-
+      
+      console.log("--------------------------------------");
+      
     }
     else {
       console.log("Uh oh. You picked a tool that isn't in your toolbox.")
+      toolList = "";
     }
   }
 }
@@ -112,11 +116,8 @@ function main() {
 main();
 
 
-// console.log(toolBox[0]);
-// console.log(toolBox[0].tool);
-// console.log(toolBox[0].cost);
-// console.log(toolBox[0].income);
-// console.log(toolBox[0].inTheBox);
+// console.log(savings);
+// console.log(toolBox);
 
 
 
