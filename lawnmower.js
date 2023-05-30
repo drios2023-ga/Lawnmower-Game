@@ -84,7 +84,7 @@ function buyATool(tool) {
 }
 
 function main() {
-  while (savings < 1000 && toolBox[4].inTheBox === false) {
+  while (savings < 1000 || toolBox[4].inTheBox === false) {
     console.log(toolBox[4].inTheBox);
     console.log(savings);
     //pick a tool to use
@@ -103,7 +103,7 @@ function main() {
       buyATool(tool);
       
       console.log("--------------------------------------");
-      
+
     }
     else {
       console.log("Uh oh. You picked a tool that isn't in your toolbox.")
