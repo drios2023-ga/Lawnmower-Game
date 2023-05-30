@@ -7,38 +7,38 @@ let tool = "";
 let buyTool = "";
 
 toolBox.push({
-            tool:'teeth',
-            cost:0,
-            income:1,
-            inTheBox: true
+  tool: 'teeth',
+  cost: 0,
+  income: 1,
+  inTheBox: true
 });
 
 toolBox.push({
-            tool:'scissors',
-            cost:5,
-            income:5,
-            inTheBox: false
+  tool: 'scissors',
+  cost: 5,
+  income: 5,
+  inTheBox: false
 });
 
 toolBox.push({
-            tool:'used mower',
-            cost:25,
-            income:50,
-            inTheBox: false
+  tool: 'used mower',
+  cost: 25,
+  income: 50,
+  inTheBox: false
 });
 
 toolBox.push({
-            tool:'new mower',
-            cost:250,
-            income:100,
-            inTheBox: false
+  tool: 'new mower',
+  cost: 250,
+  income: 100,
+  inTheBox: false
 });
 
 toolBox.push({
-            tool:'team of students',
-            cost:500,
-            income:250,
-            inTheBox: false
+  tool: 'team of students',
+  cost: 500,
+  income: 250,
+  inTheBox: false
 });
 
 console.log("--------------------------------------");
@@ -46,44 +46,54 @@ console.log("--------------------------------------");
 console.log(toolBox);
 
 //let name = prompt("What is your name? : ");
-function buildToolList(){
-  for(i=0;i<5;i++){
-      if (toolBox[i].inTheBox===true){
-        toolList = toolList + "[" + i + "] " + toolBox[i].tool + "\n"
-      }
-        
-    
+function buildToolList() {
+  for (i = 0; i < 5; i++) {
+    if (toolBox[i].inTheBox === true) {
+      toolList = toolList + "[" + i + "] " + toolBox[i].tool + "\n"
+    }
+
+
   }
   console.log(toolList);
 }
 
-function incrementSavings(tool){
+function incrementSavings(tool) {
   savings = savings + toolBox[tool].income;
-  console.log("Congrats! You earned " + toolBox[tool].income + 
-              " dollar(s) cutting grass with your " + toolBox[tool].tool + ".\n");
+  console.log("Congrats! You earned " + toolBox[tool].income +
+    " dollar(s) cutting grass with your " + toolBox[tool].tool + ".\n");
 
 }
 
-function buyATool(tool){
-  if(toolBox[tool]<4 && toolBox[tool+1].inTheBox===false && savings >= toolBox[tool+1].cost){
-    buyTool = prompt("Would you like to buy a " + toolBox[tool+1].tool + "?: (y/n)\n");
-    if (buyTool = 'y'){
-      savings = savings - toolBox[tool+1].cost;
-      toolBox[tool+1].inTheBox = true;
+function buyATool(tool) {
+  const nextTool = parseInt(tool) + 1;
+  console.log(toolBox[tool]);
+console.log(tool);
+  // console.log(nextTool);
+console.log(toolBox[nextTool]);
+console.log(toolBox[nextTool].inTheBox);
+console.log(savings);
+console.log(toolBox[nextTool].cost);
+  
+  if (tool < 4 && toolBox[nextTool].inTheBox === false && savings >= toolBox[nextTool].cost) {
+    
+    buyTool = prompt("Would you like to buy a " + toolBox[nextTool].tool + "?: (y/n)\n");
+    if (buyTool = 'y') {
+      savings = savings - toolBox[nextTool].cost;
+      toolBox[nextTool].inTheBox = true;
     }
   }
 }
 
-function main(){
-  while (toolBox[4].inTheBox === false && savings <1000){
-    
+function main() {
+  while (toolBox[4].inTheBox === false && savings < 1000) {
+
     //pick a tool to use
     buildToolList();
-    console.log("You have " + savings + " dollars in your savings.\n")
+    console.log("You have " + savings + " dollar(s) in your savings.\n")
     tool = prompt("Here are the tools in your toolbox. Which one would you like to use today?: ");
-    
+
     //confirm tool is in the box and increment savings
-    if (toolBox[tool].inTheBox===true){
+    if (toolBox[tool].inTheBox === true) {
       incrementSavings(tool);
       //clear tool list
       toolList = "";
@@ -94,9 +104,9 @@ function main(){
     }
     else {
       console.log("Uh oh. You picked a tool that isn't in your toolbox.")
-    }      
+    }
   }
-}    
+}
 
 
 main();
