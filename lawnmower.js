@@ -79,7 +79,7 @@ function main(){
     
     //pick a tool to use
     buildToolList();
-    console.log("You have " + savings + " dollar(s) in your savings.\n")
+    console.log("You have " + savings + " dollars in your savings.\n")
     tool = prompt("Here are the tools in your toolbox. Which one would you like to use today?: ");
     
     //confirm tool is in the box and increment savings
