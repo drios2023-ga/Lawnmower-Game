@@ -43,9 +43,6 @@ toolBox.push({
 });
 
 
-
-//console.log(toolBox);
-
 //let name = prompt("What is your name? : ");
 function buildToolList() {
   for (i = 0; i < 5; i++) {
@@ -75,18 +72,17 @@ function buyATool(tool) {
       savings = savings - toolBox[nextTool].cost;
       toolBox[nextTool].inTheBox = true;
 
-      //echo savings and if last tool in toolbox
-      console.log(toolBox[4].inTheBox);
-      console.log(savings);
-      
     }
   }
 }
 
 function main() {
+
+  const username = prompt('What is your name? ');
+  console.log(`Your name is ${username} and you are a landscaper!`);
+
   while (savings < 1000 || toolBox[4].inTheBox === false) {
-    console.log(toolBox[4].inTheBox);
-    console.log(savings);
+
     //pick a tool to use
     buildToolList();
     console.log("You have " + savings + " dollar(s) in your savings.\n")
@@ -102,7 +98,7 @@ function main() {
       //offer a chance to buy a tool
       buyATool(tool);
       
-      console.log("--------------------------------------");
+      console.log("---------------------------------------------------------------");
 
     }
     else {
@@ -110,14 +106,15 @@ function main() {
       toolList = "";
     }
   }
+  console.log("---------------------------------------------------------------");
+console.log("Congrats! You earned " + savings + " dollars! Now you can retire!");
+console.log("---------------------------------------------------------------");
+console.log("---------------------------THE END------------------------------");
+console.log("---------------------------------------------------------------");
 }
 
 
 main();
-
-
-// console.log(savings);
-// console.log(toolBox);
 
 
 
